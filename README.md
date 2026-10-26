@@ -28,19 +28,38 @@ vita_pulse/
 
 ## 快速启动
 
-### 1. 后端
+### 环境要求
+
+| 组件 | 版本 | 说明 |
+|---|---|---|
+| Flutter | >= 3.24.0（Dart >= 3.4.0） | `flutter doctor` 可查 |
+| Python | >= 3.10 | 后端运行 |
+| Docker | 任意较新版本 | 只用来跑 PostgreSQL 与 Redis |
+
+### 1. 起数据库（PostgreSQL + Redis）
 
 ```bash
 cd server
-cp .env.example .env          # 已按 docker 网络预置
-docker compose up -d          # 启动 PostgreSQL + Redis + API
-# 打开 http://localhost:9099/docs
+docker compose up -d postgres redis
 ```
 
-数据库首次启动自动执行 `sql/ruoyi-fastapi-pg.sql` 与 `sql/vital-init.sql`。
-默认账号 `admin` / `admin123`，App 启动时静默登录，无需手动输入。
+首次启动会自动执行 `sql/ruoyi-fastapi-pg.sql` 与 `sql/vital-init.sql`：
+建表、写入 11 项指标字典、关闭图形验证码。
 
-### 2. 客户端
+> 端口映射为 PostgreSQL `15432`、Redis `16379`，与下面的 `.env.local` 对应。
+
+### 2. 跑后端
+
+```bash
+cd server
+cp .env.local.example .env.local      # 已配好 127.0.0.1:15432 / 16379
+pip install -r requirements-pg.txt
+python app.py --env local             # 监听 9099
+```
+
+打开 <http://127.0.0.1:9099/docs> 验证，默认账号 `admin` / `admin123`。
+
+### 3. 跑客户端
 
 ```bash
 cd app
@@ -48,19 +67,21 @@ flutter pub get
 flutter run
 ```
 
-要求 Flutter >= 3.24.0、Dart >= 3.4.0。后端地址在「设置 → 服务器地址」中修改。
+App 启动时用内置账号静默登录，没有登录页。后端地址默认 `http://192.168.2.105:9099`，
+可在「设置 → 服务器地址」里改成你自己机器的局域网 IP。
 
-### 3. 浏览器预览（可选）
+> 模拟器没有摄像头时，测量页会自动降级为模拟脉搏波，界面与数据链路照样能跑通；
+> 要测真实心率请用真机。
 
-Web 端默认与页面同源，无需配置跨域：
+### 4. 浏览器预览（可选）
 
 ```bash
 cd app && flutter build web --release
-python3 tools/web_preview.py --port 8080 --api http://127.0.0.1:9099
+python3 ../tools/web_preview.py --port 8080 --api http://127.0.0.1:9099
 # 打开 http://localhost:8080
 ```
 
-浏览器无相机能力，测量流程会自动降级为模拟脉搏波，用于演示界面与数据链路。
+Web 端与页面同源，不需要配跨域。浏览器拿不到相机，测量同样走模拟数据。
 
 ## 技术栈
 
