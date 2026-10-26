@@ -1,6 +1,6 @@
 """体征业务服务层。"""
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -18,6 +18,17 @@ from utils.log_util import logger
 
 # 趋势统计允许的最大回溯天数
 MAX_TREND_DAYS = 365
+
+
+def _ensure_utc(value: datetime) -> datetime:
+    """将时间转换为带 UTC 时区的 datetime。
+
+    :param value: 原始时间，可能不带时区
+    :return: 带时区的时间对象
+    """
+    if value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
 
 
 class VitalService:
@@ -136,15 +147,15 @@ class VitalService:
         :return: 聚合点列表
         """
         days = period if 0 < period <= MAX_TREND_DAYS else MAX_TREND_DAYS
-        start_time = datetime.now() - timedelta(days=days)
+        start_time = datetime.now(timezone.utc) - timedelta(days=days)
         rows = await VitalDao.select_trend(db, user_id, metric, start_time)
         points: list[VitalTrendPointModel] = []
         for row in rows:
             raw_time = row['time']
             if isinstance(raw_time, datetime):
-                point_time = raw_time
+                point_time = _ensure_utc(raw_time)
             else:
-                point_time = datetime.fromisoformat(str(raw_time))
+                point_time = _ensure_utc(datetime.fromisoformat(str(raw_time)))
             points.append(
                 VitalTrendPointModel(
                     time=point_time,
@@ -229,7 +240,7 @@ class VitalService:
             metric=model.metric,
             value=Decimal(str(model.value)),
             unit=model.unit,
-            measured_at=model.measured_at,
+            measured_at=_ensure_utc(model.measured_at),
             source=model.source,
             quality=Decimal(str(model.quality)) if model.quality is not None else None,
             session_id=model.session_id,

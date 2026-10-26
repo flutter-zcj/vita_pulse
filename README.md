@@ -50,6 +50,18 @@ flutter run
 
 要求 Flutter >= 3.24.0、Dart >= 3.4.0。后端地址在「设置 → 服务器地址」中修改。
 
+### 3. 浏览器预览（可选）
+
+Web 端默认与页面同源，无需配置跨域：
+
+```bash
+cd app && flutter build web --release
+python3 tools/web_preview.py --port 8080 --api http://127.0.0.1:9099
+# 打开 http://localhost:8080
+```
+
+浏览器无相机能力，测量流程会自动降级为模拟脉搏波，用于演示界面与数据链路。
+
 ## 技术栈
 
 | 层 | 选型 |

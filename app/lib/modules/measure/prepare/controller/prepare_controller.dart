@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -32,6 +33,13 @@ class PrepareController extends BaseController
     await runTask(
       () async
       {
+        // 浏览器不支持相机权限查询，交由采集层降级到模拟数据
+        if (kIsWeb)
+        {
+          permissionGranted.value = true;
+          permanentlyDenied.value = false;
+          return;
+        }
         final status = await Permission.camera.status;
         if (status.isGranted)
         {

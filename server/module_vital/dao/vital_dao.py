@@ -1,6 +1,6 @@
 """体征业务数据访问层。"""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from sqlalchemy import delete, func, select
@@ -237,6 +237,9 @@ def _parse_time(text: str) -> datetime:
     :return: 解析后的时间，解析失败时返回当前时间
     """
     try:
-        return datetime.fromisoformat(text)
+        parsed = datetime.fromisoformat(text)
     except ValueError:
-        return datetime.now()
+        return datetime.now(timezone.utc)
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed

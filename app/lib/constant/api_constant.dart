@@ -6,7 +6,11 @@
 class ApiConstants
 {
   // ---- 基础地址 ----
-  static const String DEFAULT_BASE_URL = 'http://192.168.2.105:9099';
+  /// 默认服务地址，可通过 --dart-define=API_BASE_URL=xxx 在构建时覆盖
+  static const String DEFAULT_BASE_URL = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://192.168.2.105:9099',
+  );
 
   // ---- 认证（底座自带）----
   static const String LOGIN = '/login';

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:get/get.dart' show GetxService;
 
 import '../../constant/api_constant.dart';
@@ -32,7 +33,7 @@ class ApiClient extends GetxService
   Future<ApiClient> init() async
   {
     final storedBaseUrl = await _tokenStore.readBaseUrl();
-    final baseUrl = storedBaseUrl.isEmpty ? ApiConstants.DEFAULT_BASE_URL : storedBaseUrl;
+    final baseUrl = storedBaseUrl.isEmpty ? _defaultBaseUrl() : storedBaseUrl;
     _token = await _tokenStore.readToken();
     _dio = Dio(
       BaseOptions(
@@ -43,7 +44,35 @@ class ApiClient extends GetxService
         responseType: ResponseType.json,
       ),
     );
+    _applyToken();
     return this;
+  }
+
+  /// 将令牌写入请求头
+  ///
+  /// 所有业务接口都需要 Authorization，登录接口本身也允许携带。
+  void _applyToken()
+  {
+    if (_token.isEmpty)
+    {
+      _dio.options.headers.remove(ApiConstants.HEADER_AUTHORIZATION);
+      return;
+    }
+    _dio.options.headers[ApiConstants.HEADER_AUTHORIZATION] =
+        '${ApiConstants.HEADER_BEARER}$_token';
+  }
+
+  /// 默认服务地址
+  ///
+  /// Web 端与页面同源，直接取当前页面的 origin，避免跨域与端口映射问题；
+  /// 移动端使用编译期配置或默认局域网地址。
+  String _defaultBaseUrl()
+  {
+    if (kIsWeb)
+    {
+      return Uri.base.origin;
+    }
+    return ApiConstants.DEFAULT_BASE_URL;
   }
 
   /// 当前服务地址
@@ -129,6 +158,7 @@ class ApiClient extends GetxService
         throw ApiException(StringConstants.ERROR_SERVER);
       }
       _token = token;
+      _applyToken();
       await _tokenStore.writeToken(token);
     }
     on ApiException
