@@ -46,7 +46,7 @@ class PrepareView extends GetView<PrepareController>
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>
         [
-          Icon(
+          const Icon(
             Icons.no_photography_outlined,
             size: UIConstants.ICON_XL,
             color: UIConstants.COLOR_TEXT_ON_DARK_SUB,
@@ -57,7 +57,7 @@ class PrepareView extends GetView<PrepareController>
                 ? StringConstants.PREPARE_PERMISSION_DENIED
                 : StringConstants.PREPARE_PERMISSION_TITLE,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: UIConstants.FONT_SM,
               color: UIConstants.COLOR_TEXT_ON_DARK_SUB,
             ),
@@ -72,7 +72,7 @@ class PrepareView extends GetView<PrepareController>
           const SizedBox(height: UIConstants.PADDING_MD),
           TextButton(
             onPressed: controller.goManual,
-            child: Text(
+            child: const Text(
               StringConstants.PREPARE_USE_MANUAL,
               style: TextStyle(color: UIConstants.COLOR_ACCENT),
             ),
@@ -91,7 +91,7 @@ class PrepareView extends GetView<PrepareController>
         children: <Widget>
         [
           const SizedBox(height: UIConstants.PADDING_LG),
-          Text(
+          const Text(
             StringConstants.PREPARE_SUBTITLE,
             style: TextStyle(
               fontSize: UIConstants.FONT_SM,
@@ -103,7 +103,7 @@ class PrepareView extends GetView<PrepareController>
             height: UIConstants.CIRCLE_SIZE,
             child: CustomPaint(
               painter: _DashedOvalPainter(),
-              child: Center(
+              child: const Center(
                 child: Icon(
                   Icons.accessibility_new,
                   size: UIConstants.ICON_XL * 2,
@@ -123,7 +123,7 @@ class PrepareView extends GetView<PrepareController>
             onPressed: controller.startMeasure,
           ),
           const SizedBox(height: UIConstants.PADDING_LG),
-          Text(
+          const Text(
             StringConstants.DISCLAIMER,
             style: TextStyle(
               fontSize: UIConstants.FONT_XS,
@@ -160,7 +160,7 @@ class PrepareView extends GetView<PrepareController>
           Expanded(
             child: Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: UIConstants.FONT_SM,
                 color: UIConstants.COLOR_TEXT_ON_DARK,
               ),

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../../constant/route_constant.dart';
-import '../../../core/base/base_controller.dart';
+import '../../../../constant/route_constant.dart';
+import '../../../../core/base/base_controller.dart';
 
 /// 测量准备页控制器
 ///

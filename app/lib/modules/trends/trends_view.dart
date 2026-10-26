@@ -142,8 +142,8 @@ class TrendsView extends GetView<TrendsController>
         const SizedBox(height: UIConstants.PADDING_LG),
         _buildStats(),
         if (controller.isFewSamples)
-          Padding(
-            padding: const EdgeInsets.only(top: UIConstants.PADDING_MD),
+          const Padding(
+            padding: EdgeInsets.only(top: UIConstants.PADDING_MD),
             child: Text(
               StringConstants.TREND_FEW_SAMPLES,
               style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
@@ -216,7 +216,7 @@ class TrendsView extends GetView<TrendsController>
     final maxValue = metric?.defaultMax;
     if (minValue == null || maxValue == null)
     {
-      return RangeAnnotations();
+      return const RangeAnnotations();
     }
     return RangeAnnotations(
       horizontalRangeAnnotations: <HorizontalRangeAnnotation>
@@ -257,7 +257,7 @@ class TrendsView extends GetView<TrendsController>
       padding: const EdgeInsets.only(top: UIConstants.PADDING_XS),
       child: Text(
         DateUtil.formatShortDate(points[index].time),
-        style: TextStyle(fontSize: UIConstants.FONT_XS - 2, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+        style: const TextStyle(fontSize: UIConstants.FONT_XS - 2, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
       ),
     );
   }
@@ -298,7 +298,7 @@ class TrendsView extends GetView<TrendsController>
         [
           Text(
             value,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: UIConstants.FONT_MD,
               fontWeight: FontWeight.w600,
               color: UIConstants.COLOR_TEXT_ON_LIGHT,
@@ -307,7 +307,7 @@ class TrendsView extends GetView<TrendsController>
           const SizedBox(height: UIConstants.PADDING_XS),
           Text(
             label,
-            style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+            style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
           ),
         ],
       ),

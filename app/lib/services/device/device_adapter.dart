@@ -1,3 +1,8 @@
+/// 采样回调
+///
+/// value 为红色通道均值，timeSec 为相对开始时刻的秒数
+typedef SampleCallback = void Function(double value, double timeSec);
+
 /// 采集设备抽象
 ///
 /// 功能说明: 统一摄像头、Mock 与蓝牙三种数据源的接入方式，便于替换
@@ -10,11 +15,6 @@ abstract class DeviceAdapter
 
   /// 当前环境是否支持
   bool get isSupported;
-
-  /// 采样回调类型
-  ///
-  /// value 为红色通道均值，timeSec 为相对开始时刻的秒数
-  typedef SampleCallback = void Function(double value, double timeSec);
 
   /// 启动采集
   ///

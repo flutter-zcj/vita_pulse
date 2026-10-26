@@ -24,7 +24,7 @@ class RecordEditView extends GetView<RecordEditController>
   {
     return PopScope(
       canPop: !controller.isDirty,
-      onPopInvoked: (didPop) => _handlePop(didPop),
+      onPopInvokedWithResult: (didPop, result) => _handlePop(didPop),
       child: Scaffold(
         appBar: AppBar(title: const Text(StringConstants.TITLE_RECORD_EDIT)),
         body: Obx(
@@ -71,7 +71,7 @@ class RecordEditView extends GetView<RecordEditController>
         return Row(
           children: <Widget>
           [
-            Text(
+            const Text(
               '*${StringConstants.EDIT_METRIC}',
               style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
             ),
@@ -130,14 +130,14 @@ class RecordEditView extends GetView<RecordEditController>
         Row(
           children: <Widget>
           [
-            Text(
+            const Text(
               StringConstants.EDIT_UNIT,
               style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
             ),
             const SizedBox(width: UIConstants.PADDING_SM),
             Text(
               metric.unit,
-              style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+              style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
             ),
           ],
         ),
@@ -159,7 +159,7 @@ class RecordEditView extends GetView<RecordEditController>
           width: UIConstants.CHART_HEIGHT / 3,
           child: Text(
             '*$label',
-            style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
+            style: const TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
           ),
         ),
         Expanded(
@@ -192,7 +192,7 @@ class RecordEditView extends GetView<RecordEditController>
             alignment: Alignment.centerLeft,
             child: Text(
               controller.valueError.value,
-              style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_DANGER),
+              style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_DANGER),
             ),
           ),
         );
@@ -211,7 +211,7 @@ class RecordEditView extends GetView<RecordEditController>
         return Row(
           children: <Widget>
           [
-            Text(
+            const Text(
               '*${StringConstants.EDIT_TIME}',
               style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
             ),
@@ -233,8 +233,8 @@ class RecordEditView extends GetView<RecordEditController>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>
       [
-        Padding(
-          padding: const EdgeInsets.only(top: UIConstants.PADDING_MD),
+        const Padding(
+          padding: EdgeInsets.only(top: UIConstants.PADDING_MD),
           child: Text(
             StringConstants.EDIT_REMARK,
             style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),

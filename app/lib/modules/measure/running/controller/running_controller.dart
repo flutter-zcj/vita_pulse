@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 
-import '../../../constant/num_constant.dart';
-import '../../../constant/route_constant.dart';
-import '../../../core/base/base_controller.dart';
-import '../../../core/utils/format_util.dart';
-import '../../../data/models/measure_result.dart';
-import '../../../services/device/camera_adapter.dart';
-import '../../../services/device/device_adapter.dart';
-import '../../../services/device/mock_adapter.dart';
-import '../../../services/ppg/ppg_analysis.dart';
-import '../../../services/ppg/ppg_engine.dart';
+import '../../../../constant/num_constant.dart';
+import '../../../../constant/route_constant.dart';
+import '../../../../core/base/base_controller.dart';
+import '../../../../core/utils/format_util.dart';
+import '../../../../data/models/measure_result.dart';
+import '../../../../services/device/camera_adapter.dart';
+import '../../../../services/device/device_adapter.dart';
+import '../../../../services/device/mock_adapter.dart';
+import '../../../../services/ppg/ppg_analysis.dart';
+import '../../../../services/ppg/ppg_engine.dart';
 
 /// 检测进行中控制器
 ///

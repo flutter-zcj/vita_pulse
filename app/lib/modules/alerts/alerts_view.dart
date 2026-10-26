@@ -77,12 +77,12 @@ class AlertsView extends GetView<AlertsController>
                   [
                     Text(
                       rule.label.isEmpty ? rule.metric : rule.label,
-                      style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
+                      style: const TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
                     ),
                     const SizedBox(height: UIConstants.PADDING_XS),
                     Text(
                       rule.rangeText,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UIConstants.FONT_XS,
                         color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
                       ),
@@ -94,7 +94,7 @@ class AlertsView extends GetView<AlertsController>
                 value: rule.enabled,
                 onChanged: (value) => controller.toggle(rule, value),
               ),
-              Icon(Icons.chevron_right, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+              const Icon(Icons.chevron_right, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
             ],
           ),
         ),
@@ -122,7 +122,7 @@ class AlertsView extends GetView<AlertsController>
           [
             Text(
               '${StringConstants.ALERT_EDIT_TITLE} · ${rule.label}',
-              style: TextStyle(fontSize: UIConstants.FONT_DEFAULT, color: UIConstants.COLOR_TEXT_ON_LIGHT),
+              style: const TextStyle(fontSize: UIConstants.FONT_DEFAULT, color: UIConstants.COLOR_TEXT_ON_LIGHT),
             ),
             const SizedBox(height: UIConstants.PADDING_LG),
             Row(
@@ -169,7 +169,7 @@ class AlertsView extends GetView<AlertsController>
       [
         Text(
           label,
-          style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+          style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
         ),
         TextField(
           controller: controllerRef,

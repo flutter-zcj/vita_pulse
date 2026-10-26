@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constant/str_constant.dart';
 import '../constant/ui_constant.dart';
+import 'state_view_type.dart';
 
 /// 通用状态视图
 ///
@@ -11,7 +12,7 @@ import '../constant/ui_constant.dart';
 class StateView extends StatelessWidget
 {
   /// 展示类型
-  final _StateType type;
+  final StateViewType type;
 
   /// 提示文案
   final String message;
@@ -25,25 +26,24 @@ class StateView extends StatelessWidget
   /// 加载中
   ///
   /// [onDark] 是否用于深色背景
-  const StateView.loading({bool onDark = false})
-      : type = _StateType.loading,
+  const StateView.loading({super.key, this.onDark = false})
+      : type = StateViewType.loading,
         message = StringConstants.TIP_LOADING,
-        onRetry = null,
-        onDark = onDark;
+        onRetry = null;
 
   /// 空数据
   ///
   /// [message] 空态文案
   /// [onRetry] 可选的重试回调
   /// [onDark] 是否用于深色背景
-  const StateView.empty(this.message, {this.onRetry, this.onDark = false}) : type = _StateType.empty;
+  const StateView.empty(this.message, {super.key, this.onRetry, this.onDark = false}) : type = StateViewType.empty;
 
   /// 错误
   ///
   /// [message] 错误文案
   /// [onRetry] 重试回调
   /// [onDark] 是否用于深色背景
-  const StateView.error(this.message, {this.onRetry, this.onDark = false}) : type = _StateType.error;
+  const StateView.error(this.message, {super.key, this.onRetry, this.onDark = false}) : type = StateViewType.error;
 
   @override
   Widget build(BuildContext context)
@@ -56,19 +56,19 @@ class StateView extends StatelessWidget
           mainAxisSize: MainAxisSize.min,
           children: <Widget>
           [
-            if (type == _StateType.loading)
+            if (type == StateViewType.loading)
               const SizedBox(
                 width: UIConstants.ICON_LG,
                 height: UIConstants.ICON_LG,
                 child: CircularProgressIndicator(strokeWidth: 2),
               ),
-            if (type == _StateType.empty)
+            if (type == StateViewType.empty)
               Icon(
                 Icons.inbox_outlined,
                 size: UIConstants.ICON_XL,
                 color: textColor,
               ),
-            if (type == _StateType.error)
+            if (type == StateViewType.error)
               Icon(
                 Icons.cloud_off_outlined,
                 size: UIConstants.ICON_XL,
@@ -93,12 +93,4 @@ class StateView extends StatelessWidget
       ),
     );
   }
-}
-
-/// 状态类型
-enum _StateType
-{
-  loading,
-  empty,
-  error,
 }

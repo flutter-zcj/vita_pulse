@@ -29,7 +29,7 @@ class RunningView extends GetView<RunningController>
           children: <Widget>
           [
             const SizedBox(height: UIConstants.PADDING_LG),
-            Text(
+            const Text(
               StringConstants.RUNNING_SUBTITLE,
               style: TextStyle(
                 fontSize: UIConstants.FONT_SM,
@@ -42,8 +42,8 @@ class RunningView extends GetView<RunningController>
             _buildWaveCard(),
             const Spacer(),
             if (controller.noFinger.value)
-              Padding(
-                padding: const EdgeInsets.only(bottom: UIConstants.PADDING_MD),
+              const Padding(
+                padding: EdgeInsets.only(bottom: UIConstants.PADDING_MD),
                 child: Text(
                   StringConstants.RUNNING_NO_FINGER,
                   style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_WARNING),
@@ -81,13 +81,13 @@ class RunningView extends GetView<RunningController>
                 [
                   Text(
                     '${controller.remainingSec.value}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: UIConstants.FONT_DISPLAY,
                       fontWeight: FontWeight.w300,
                       color: UIConstants.COLOR_ACCENT,
                     ),
                   ),
-                  Text(
+                  const Text(
                     StringConstants.RUNNING_UNIT_SECOND,
                     style: TextStyle(
                       fontSize: UIConstants.FONT_SM,
@@ -119,7 +119,7 @@ class RunningView extends GetView<RunningController>
           Row(
             children: <Widget>
             [
-              Expanded(
+              const Expanded(
                 child: Text(
                   StringConstants.RUNNING_WAVE_TITLE,
                   style: TextStyle(
@@ -138,7 +138,7 @@ class RunningView extends GetView<RunningController>
                   }
                   return Text(
                     '${value.toStringAsFixed(0)} bpm',
-                    style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_ACCENT),
+                    style: const TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_ACCENT),
                   );
                 },
               ),
@@ -163,8 +163,8 @@ class RunningView extends GetView<RunningController>
             ),
           ),
           if (controller.weakSignal.value)
-            Padding(
-              padding: const EdgeInsets.only(top: UIConstants.PADDING_SM),
+            const Padding(
+              padding: EdgeInsets.only(top: UIConstants.PADDING_SM),
               child: Text(
                 StringConstants.RUNNING_WEAK_SIGNAL,
                 style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_WARNING),

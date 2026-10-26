@@ -32,12 +32,12 @@ class ResultView extends GetView<ResultController>
           const SizedBox(height: UIConstants.PADDING_LG),
           _buildStressSection(),
           const SizedBox(height: UIConstants.PADDING_LG),
-          Text(
+          const Text(
             StringConstants.RESULT_STRESS_DESC,
             style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
           ),
           const SizedBox(height: UIConstants.PADDING_XS),
-          Text(
+          const Text(
             StringConstants.DISCLAIMER,
             style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
           ),
@@ -69,11 +69,11 @@ class ResultView extends GetView<ResultController>
         color: UIConstants.COLOR_WARNING.withOpacity(0.12),
         borderRadius: BorderRadius.circular(UIConstants.RADIUS_DEFAULT),
       ),
-      child: Row(
+      child: const Row(
         children: <Widget>
         [
           Icon(Icons.info_outline, size: UIConstants.ICON_SM, color: UIConstants.COLOR_WARNING),
-          const SizedBox(width: UIConstants.PADDING_SM),
+          SizedBox(width: UIConstants.PADDING_SM),
           Expanded(
             child: Text(
               StringConstants.RESULT_WEAK_HINT,
@@ -153,7 +153,7 @@ class ResultView extends GetView<ResultController>
               Expanded(
                 child: Text(
                   label,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: UIConstants.FONT_XS,
                     color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
                   ),
@@ -162,7 +162,7 @@ class ResultView extends GetView<ResultController>
               if (badge.isNotEmpty)
                 Text(
                   badge,
-                  style: TextStyle(fontSize: UIConstants.FONT_XS - 2, color: UIConstants.COLOR_ACCENT_LIGHT),
+                  style: const TextStyle(fontSize: UIConstants.FONT_XS - 2, color: UIConstants.COLOR_ACCENT_LIGHT),
                 ),
             ],
           ),
@@ -173,7 +173,7 @@ class ResultView extends GetView<ResultController>
             [
               Text(
                 value,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: UIConstants.FONT_LG,
                   fontWeight: FontWeight.w600,
                   color: UIConstants.COLOR_TEXT_ON_LIGHT,
@@ -184,7 +184,7 @@ class ResultView extends GetView<ResultController>
                   padding: const EdgeInsets.only(left: UIConstants.PADDING_XS),
                   child: Text(
                     unit,
-                    style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+                    style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
                   ),
                 ),
             ],
@@ -212,14 +212,14 @@ class ResultView extends GetView<ResultController>
         Row(
           children: <Widget>
           [
-            Text(
+            const Text(
               StringConstants.RESULT_STRESS,
               style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
             ),
             const Spacer(),
             Text(
               controller.result.stressLabel,
-              style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_ACCENT_LIGHT),
+              style: const TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_ACCENT_LIGHT),
             ),
           ],
         ),
@@ -255,7 +255,7 @@ class ResultView extends GetView<ResultController>
                 child: Text(
                   labels[index],
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: UIConstants.FONT_XS - 2,
                     color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
                   ),

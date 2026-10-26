@@ -212,7 +212,7 @@ class RecordsView extends GetView<RecordsController>
                   [
                     Text(
                       label,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UIConstants.FONT_SM,
                         color: UIConstants.COLOR_TEXT_ON_LIGHT,
                       ),
@@ -220,7 +220,7 @@ class RecordsView extends GetView<RecordsController>
                     const SizedBox(height: UIConstants.PADDING_XS),
                     Text(
                       '${FormatUtil.formatValue(record.value, NumberConstants.PRECISION_ZERO)} ${record.unit}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UIConstants.FONT_MD,
                         fontWeight: FontWeight.w600,
                         color: UIConstants.COLOR_TEXT_ON_LIGHT,
@@ -229,7 +229,7 @@ class RecordsView extends GetView<RecordsController>
                     const SizedBox(height: UIConstants.PADDING_XS),
                     Text(
                       DateUtil.formatRecordTime(record.measuredAt),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UIConstants.FONT_XS,
                         color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
                       ),
@@ -237,7 +237,7 @@ class RecordsView extends GetView<RecordsController>
                   ],
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.chevron_right,
                 color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
               ),

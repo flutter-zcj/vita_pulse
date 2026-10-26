@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 
-import '../../../constant/num_constant.dart';
-import '../../../constant/route_constant.dart';
-import '../../../constant/str_constant.dart';
-import '../../../core/base/base_controller.dart';
-import '../../../data/models/measure_result.dart';
-import '../../../data/models/vital_record.dart';
-import '../../../data/repositories/vital_repository.dart';
+import '../../../../constant/num_constant.dart';
+import '../../../../constant/route_constant.dart';
+import '../../../../constant/str_constant.dart';
+import '../../../../core/base/base_controller.dart';
+import '../../../../data/models/measure_result.dart';
+import '../../../../data/models/vital_record.dart';
+import '../../../../data/repositories/vital_repository.dart';
 
 /// 检测结果页控制器
 ///

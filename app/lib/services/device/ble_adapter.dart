@@ -20,7 +20,7 @@ class BleAdapter implements DeviceAdapter
   /// [onSample] 每帧回调
   /// 当前版本直接抛出未支持异常
   @override
-  Future<void> start(DeviceAdapter.SampleCallback onSample) async
+  Future<void> start(SampleCallback onSample) async
   {
     throw UnsupportedError('BLE adapter is reserved for v1.1');
   }

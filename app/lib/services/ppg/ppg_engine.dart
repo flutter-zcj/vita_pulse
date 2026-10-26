@@ -107,7 +107,7 @@ class PpgEngine
     );
 
     // 3. 取末端窗口做频谱分析
-    final windowSize = NumberConstants.FFT_WINDOW_SIZE;
+    const windowSize = NumberConstants.FFT_WINDOW_SIZE;
     final segment = filtered.length > windowSize
         ? filtered.sublist(filtered.length - windowSize)
         : filtered;
@@ -118,7 +118,9 @@ class PpgEngine
     {
       return null;
     }
-    final binCount = segment.length;
+    // FFT 内部会补零到 2 的幂，频率分辨率必须按补零后的长度计算，
+    // 否则会系统性高估心率（补零越多，偏差越大）。
+    final binCount = PpgFft.nextPowerOfTwo(segment.length);
     final lowBin = (NumberConstants.BANDPASS_LOW_HZ * binCount / sampleRate).ceil();
     final highBin = (NumberConstants.BANDPASS_HIGH_HZ * binCount / sampleRate).floor();
     if (highBin <= lowBin || highBin >= spectrum.length)

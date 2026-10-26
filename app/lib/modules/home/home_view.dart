@@ -48,7 +48,7 @@ class HomeView extends GetView<HomeController>
               [
                 Text(
                   DateUtil.formatDate(DateTime.now()),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: UIConstants.FONT_XS,
                     color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
                   ),
@@ -107,7 +107,7 @@ class HomeView extends GetView<HomeController>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>
         [
-          Text(
+          const Text(
             StringConstants.HOME_RECENT_TREND,
             style: TextStyle(
               fontSize: UIConstants.FONT_SM,
@@ -118,7 +118,7 @@ class HomeView extends GetView<HomeController>
           SizedBox(
             height: UIConstants.WAVE_HEIGHT / 2,
             child: values.isEmpty
-                ? Center(
+                ? const Center(
                     child: Text(
                       StringConstants.HOME_GO_INPUT,
                       style: TextStyle(

@@ -39,7 +39,7 @@ class MockAdapter implements DeviceAdapter
   ///
   /// [onSample] 每帧回调
   @override
-  Future<void> start(DeviceAdapter.SampleCallback onSample) async
+  Future<void> start(SampleCallback onSample) async
   {
     await stop();
     _index = 0;

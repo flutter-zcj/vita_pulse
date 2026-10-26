@@ -25,7 +25,7 @@ class SplashView extends GetView<SplashController>
           mainAxisSize: MainAxisSize.min,
           children: <Widget>
           [
-            Text(
+            const Text(
               StringConstants.TIP_LOADING,
               style: TextStyle(
                 fontSize: UIConstants.FONT_SM,
@@ -49,7 +49,7 @@ class SplashView extends GetView<SplashController>
                   [
                     Text(
                       controller.errorMessage.value,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: UIConstants.FONT_SM,
                         color: UIConstants.COLOR_TEXT_ON_DARK_SUB,
                       ),

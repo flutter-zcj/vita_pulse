@@ -34,7 +34,7 @@ class CameraAdapter implements DeviceAdapter
   ///
   /// [onSample] 每帧回调，参数为红色通道均值与相对时间
   @override
-  Future<void> start(DeviceAdapter.SampleCallback onSample) async
+  Future<void> start(SampleCallback onSample) async
   {
     await stop();
     final cameras = await availableCameras();

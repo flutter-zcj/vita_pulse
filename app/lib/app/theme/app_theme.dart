@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constant/ui_constant.dart';
+import '../../constant/ui_constant.dart';
 
 /// 应用主题
 ///

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import '../../constant/route_constant.dart';
-import '../../core/api/api_client.dart';
-import '../../core/base/base_controller.dart';
+import '../../../constant/route_constant.dart';
+import '../../../core/api/api_client.dart';
+import '../../../core/base/base_controller.dart';
 
 /// 启动页控制器
 ///

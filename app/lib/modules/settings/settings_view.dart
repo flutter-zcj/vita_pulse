@@ -90,7 +90,7 @@ class SettingsView extends GetView<SettingsController>
       ),
       child: Text(
         title,
-        style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+        style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
       ),
     );
   }
@@ -127,17 +127,17 @@ class SettingsView extends GetView<SettingsController>
             Expanded(
               child: Text(
                 title,
-                style: TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
+                style: const TextStyle(fontSize: UIConstants.FONT_SM, color: UIConstants.COLOR_TEXT_ON_LIGHT),
               ),
             ),
             if (value.isNotEmpty)
               Text(
                 value,
-                style: TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
+                style: const TextStyle(fontSize: UIConstants.FONT_XS, color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB),
               ),
             if (trailing != null) trailing,
             if (showArrow)
-              Icon(
+              const Icon(
                 Icons.chevron_right,
                 size: UIConstants.ICON_DEFAULT,
                 color: UIConstants.COLOR_TEXT_ON_LIGHT_SUB,
